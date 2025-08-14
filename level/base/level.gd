@@ -16,9 +16,9 @@ func _on_invalid_solution():
 func _ready() -> void:
 	initialise_camera()
 	position_ui()
-	initialise_board()
 	generate_elements()
 	generate_pieces()
+	initialise_board()
 
 const board_packed_scene = preload("res://level/base/board.tscn")
 func initialise_board() -> void:
