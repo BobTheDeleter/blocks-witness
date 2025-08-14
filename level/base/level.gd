@@ -1,6 +1,8 @@
 class_name Level
 extends TileMapLayer
 
+signal change_level(level_num: int)
+
 @export var data: LevelData
 
 # Get the last part of the file name to determine the next level
@@ -10,17 +12,20 @@ func _on_valid_solution():
 	Progression.highest_completed_level = max(level_num, Progression.highest_completed_level)
 	$solution_text.win()
 	await $solution_text.win_text_over
-	Progression.load_level(level_num + 1)
+	change_level.emit(level_num + 1)
 func _on_invalid_solution():
 	$solution_text.lose()
 
 func _ready() -> void:
+	change_level.connect(Progression._on_change_level)
+
 	Progression.current_level = level_num
 	initialise_camera()
-	position_ui()
 	generate_pieces()
 	generate_elements()
 	initialise_board()
+	create_level_select_arrows()
+	position_ui()
 
 	clear()
 
@@ -85,3 +90,18 @@ func generate_pieces() -> void:
 		piece.line_thickness = data.line_thickness
 		add_child(piece)
 		piece.queue_redraw()
+
+const level_select_arrow_packed_scene = preload("res://level/base/level_select_arrow.tscn")
+func create_level_select_arrows() -> void:
+	if level_num > 0:
+		var left_arrow = level_select_arrow_packed_scene.instantiate()
+		left_arrow.rotation = PI
+		left_arrow.pressed.connect(Progression._on_change_level.bind(level_num - 1))
+		$ui.add_child(left_arrow)
+		left_arrow.position = Vector2(50, DisplayServer.window_get_size().y / 2.0)
+	
+	if Progression.highest_completed_level >= level_num:
+		var right_arrow = level_select_arrow_packed_scene.instantiate()
+		right_arrow.pressed.connect(Progression._on_change_level.bind(level_num + 1))
+		$ui.add_child(right_arrow)
+		right_arrow.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)

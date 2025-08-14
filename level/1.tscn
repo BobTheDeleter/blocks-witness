@@ -20,3 +20,5 @@ tile_map_data = PackedByteArray(0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = ExtResource("1_4dphp")
 script = ExtResource("2_n8xq6")
 data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
