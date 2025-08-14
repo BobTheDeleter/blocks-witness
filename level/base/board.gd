@@ -91,13 +91,14 @@ func _on_piece_placed(piece: Piece) -> void:
 		piece.state = piece.State.IN_PALETTE
 
 	check_for_solution()
-	place_palette_pieces()
+	for other_piece: Piece in pieces:
+		if other_piece.state == other_piece.State.IN_PALETTE:
+			other_piece.move_out_of_board()
 
 @onready var tween: Tween
 func check_for_solution() -> void:
 	if tween:
 		tween.kill()
-	tween = create_tween()
 
 	for element: Element in elements:
 		element.initialise(self)
@@ -109,6 +110,8 @@ func check_for_solution() -> void:
 	var valid = true
 	for element: Element in elements:
 		if not element.check(data):
+			if not tween:
+				tween = create_tween()
 			valid = false
 			var original_colour = element.colour
 			element.colour = Colours.RED

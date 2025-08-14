@@ -11,8 +11,7 @@ signal change_level(level_num: int)
 func _on_valid_solution():
 	Progression.highest_completed_level = max(level_num, Progression.highest_completed_level)
 	$solution_text.win()
-	await $solution_text.win_text_over
-	change_level.emit(level_num + 1)
+	create_next_level_button()
 func _on_invalid_solution():
 	$solution_text.lose()
 
@@ -105,3 +104,9 @@ func create_level_select_arrows() -> void:
 		right_arrow.pressed.connect(Progression._on_change_level.bind(level_num + 1))
 		$ui.add_child(right_arrow)
 		right_arrow.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)
+
+func create_next_level_button() -> void:
+	var next_level_button = level_select_arrow_packed_scene.instantiate()
+	next_level_button.pressed.connect(Progression._on_change_level.bind(level_num + 1))
+	$ui.add_child(next_level_button)
+	next_level_button.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)

@@ -3,9 +3,9 @@
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_r4nvj"]
 [ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_f7uwc"]
 [ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_kx1vk"]
-[ext_resource type="Resource" uid="uid://tnv88pxer5pe" path="res://piece/teewee.tres" id="4_f7uwc"]
 [ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="5_8j2kt"]
 [ext_resource type="Resource" uid="uid://fvq3b6xtnafs" path="res://piece/cleveland_z.tres" id="5_kx1vk"]
+[ext_resource type="Resource" uid="uid://dasg14fpaujmg" path="res://piece/smashboy.tres" id="5_p7go5"]
 [ext_resource type="Texture2D" uid="uid://5vuyf64x150p" path="res://ui/mouse_right_outline.svg" id="7_8qchx"]
 [ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="8_8j2kt"]
 [ext_resource type="Texture2D" uid="uid://did64eyl61y4g" path="res://ui/rotate_arrow.png" id="9_8j2kt"]
@@ -13,7 +13,7 @@
 [sub_resource type="Resource" id="Resource_farmd"]
 script = ExtResource("5_8j2kt")
 board_size = Vector2i(4, 3)
-pieces = Array[ExtResource("3_kx1vk")]([ExtResource("4_f7uwc"), ExtResource("5_kx1vk")])
+pieces = Array[ExtResource("3_kx1vk")]([ExtResource("5_kx1vk"), ExtResource("5_p7go5")])
 line_thickness = 2
 cell_size_px = 80
 piece_spacing_multiplier = 1.0
