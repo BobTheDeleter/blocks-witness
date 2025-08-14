@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5vuyf64x150p"
-path="res://.godot/imported/mouse_right_outline.svg-e76a9b2617ef3d7bcb9f687682599824.ctex"
+path="res://.godot/imported/mouse_right_outline.svg-b0ac5e007f01ee973f3d5b040a44841b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mouse_right_outline.svg"
-dest_files=["res://.godot/imported/mouse_right_outline.svg-e76a9b2617ef3d7bcb9f687682599824.ctex"]
+source_file="res://ui/mouse_right_outline.svg"
+dest_files=["res://.godot/imported/mouse_right_outline.svg-b0ac5e007f01ee973f3d5b040a44841b.ctex"]
 
 [params]
 
