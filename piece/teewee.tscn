@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvwm8rkmulr2y"]
-
-[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="1_t3ckj"]
-[ext_resource type="Resource" uid="uid://tnv88pxer5pe" path="res://piece/teewee.tres" id="2_j3p2j"]
-
-[node name="teewee" type="Node2D" groups=["piece"]]
-script = ExtResource("1_t3ckj")
-initial_data = ExtResource("2_j3p2j")

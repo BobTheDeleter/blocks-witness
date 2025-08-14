@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Colours="*res://autoloads/colours.gd"
+Progression="*res://autoloads/progression.gd"
 
 [display]
 

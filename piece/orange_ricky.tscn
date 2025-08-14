@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6qy08ffiogb5"]
-
-[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="1_x62pi"]
-[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="2_if27e"]
-
-[node name="orange_ricky" type="Node2D" groups=["piece"]]
-script = ExtResource("1_x62pi")
-initial_data = ExtResource("2_if27e")

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://t6ua0aseg4sv"]
-
-[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="1_gq62a"]
-[ext_resource type="Resource" uid="uid://bonbrvciedp5k" path="res://piece/rhode_island_z.tres" id="2_iadln"]
-
-[node name="rhode_island_z" type="Node2D" groups=["piece"]]
-script = ExtResource("1_gq62a")
-initial_data = ExtResource("2_iadln")

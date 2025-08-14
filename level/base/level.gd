@@ -4,16 +4,18 @@ extends TileMapLayer
 @export var data: LevelData
 
 # Get the last part of the file name to determine the next level
-@onready var next = str(int(get_scene_file_path().split("_")[-1].split(".")[0]) + 1)
+@onready var level_num = int(get_scene_file_path().split(".")[0])
 
 func _on_valid_solution():
+	Progression.highest_completed_level = max(level_num, Progression.highest_completed_level)
 	$solution_text.win()
 	await $solution_text.win_text_over
-	get_tree().change_scene_to_file("res://level/level_"+next+".tscn")
+	Progression.load_level(level_num + 1)
 func _on_invalid_solution():
 	$solution_text.lose()
 
 func _ready() -> void:
+	Progression.current_level = level_num
 	initialise_camera()
 	position_ui()
 	generate_elements()
