@@ -1,31 +1,37 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2lclqgonr5nf"]
+[gd_scene load_steps=14 format=3 uid="uid://bd33hcks1dwt0"]
 
 [ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_x05mp"]
 [ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="2_3kkxp"]
 [ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="3_2lj7j"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="3_cwafv"]
 [ext_resource type="PackedScene" uid="uid://djpdgfphcip0a" path="res://piece/blue_ricky.tscn" id="4_cwafv"]
 [ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="5_l6gqv"]
-[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="9_nfxc2"]
-[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="10_ncg78"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://level/base/you_win.png" id="9_nfxc2"]
 [ext_resource type="Texture2D" uid="uid://cxkstissdjq73" path="res://ui/mouse_left_outline.svg" id="11_5h4mv"]
 [ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="12_eiu8h"]
 [ext_resource type="Texture2D" uid="uid://cprn0mr75fe5u" path="res://ui/arrow-up-solid-full.svg" id="13_ctipr"]
 [ext_resource type="Texture2D" uid="uid://bwep0uhx8lrrd" path="res://ui/arrow-down-solid-full.svg" id="14_ykst8"]
-[ext_resource type="PackedScene" uid="uid://cgx0k13rfjl21" path="res://level/base/editor/editor.tscn" id="15_o3mil"]
+
+[sub_resource type="Resource" id="Resource_sdpr0"]
+script = ExtResource("3_cwafv")
+board_size = Vector2i(0, 0)
+pieces = Array[ExtResource("5_l6gqv")]([])
+cell_size_px = 0
+metadata/_custom_type_script = "uid://dkogue6fhshum"
 
 [sub_resource type="Resource" id="Resource_mytjb"]
 script = ExtResource("5_l6gqv")
-blocks = PackedVector2Array(0, 0, 1, 0, 2, 0, 0, -1)
+blocks = Array[Vector2i]([])
 type = 0
 metadata/_custom_type_script = "uid://cmp6whuwah5wl"
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_x05mp")
+data = SubResource("Resource_sdpr0")
 
 [node name="board" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_3kkxp")
-cell_size_px = 60
 
 [node name="camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -45,7 +51,6 @@ texture = ExtResource("9_nfxc2")
 
 [node name="ui" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("10_ncg78")
 
 [node name="MouseLeftOutline" type="Sprite2D" parent="ui"]
 position = Vector2(100, 100)
@@ -80,8 +85,3 @@ texture = ExtResource("12_eiu8h")
 position = Vector2(15, 15)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("14_ykst8")
-
-[node name="editor" parent="." instance=ExtResource("15_o3mil")]
-unique_name_in_owner = true
-tile_map_data = PackedByteArray(0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-board_size = Vector2i(3, 3)

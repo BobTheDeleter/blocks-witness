@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doqr63dbmfmg"
-path="res://.godot/imported/level_editor_icons.png-538040d05b7e62c8d3e4092ae46da303.ctex"
+uid="uid://ci1u7q70o5dyv"
+path="res://.godot/imported/you_suck.png-ce121d45f2c18e6879f18bb0cb23da69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/base/editor/level_editor_icons.png"
-dest_files=["res://.godot/imported/level_editor_icons.png-538040d05b7e62c8d3e4092ae46da303.ctex"]
+source_file="res://level/base/you_suck.png"
+dest_files=["res://.godot/imported/you_suck.png-ce121d45f2c18e6879f18bb0cb23da69.ctex"]
 
 [params]
 

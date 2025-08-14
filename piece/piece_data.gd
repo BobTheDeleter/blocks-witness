@@ -1,6 +1,6 @@
 class_name PieceData extends Resource
 
-@export var blocks: PackedVector2Array
+@export var blocks: Array[Vector2i]
 
 enum PIECE_TYPE {
 	NORMAL

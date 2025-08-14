@@ -1,10 +1,11 @@
-class_name Board extends Node2D
+class_name Board
+extends Node2D
 
 signal valid_solution
 signal invalid_solution
 
 var size_grid: Vector2i
-@export var cell_size_px: int = 80
+var cell_size_px: int = 80
 var line_thickness: float = 2.0
 
 var area2d: Area2D
@@ -15,7 +16,7 @@ var rect_px: Rect2
 
 var data = {}
 
-func initialise_board() -> void:
+func initialise() -> void:
 	pieces = get_tree().get_nodes_in_group("piece")
 	elements = get_tree().get_nodes_in_group("element")
 
@@ -108,7 +109,6 @@ func check_for_solution() -> void:
 	var valid = true
 	for element: Element in elements:
 		if not element.check(data):
-
 			valid = false
 			var original_colour = element.colour
 			element.colour = Colours.RED
