@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddvwouwknskli"]
+
+[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="1_h6yph"]
+[ext_resource type="Resource" uid="uid://bb8bdpnygl0t0" path="res://piece/hero.tres" id="2_mdu1y"]
+
+[node name="hero" type="Node2D" groups=["piece"]]
+script = ExtResource("1_h6yph")
+initial_data = ExtResource("2_mdu1y")

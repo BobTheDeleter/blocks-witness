@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d316ydl6xwlct"]
+
+[ext_resource type="Script" uid="uid://d34a77e5o0jnw" path="res://element/partition_dot.gd" id="1_tcihu"]
+
+[node name="partition_dot" type="Node2D" groups=["element"]]
+script = ExtResource("1_tcihu")

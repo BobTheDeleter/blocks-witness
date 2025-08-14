@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqlbe8e76lhf7"]
+
+[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="1_miw2r"]
+[ext_resource type="Resource" uid="uid://dasg14fpaujmg" path="res://piece/smashboy.tres" id="2_2wroj"]
+
+[node name="smashboy" type="Node2D" groups=["piece"]]
+script = ExtResource("1_miw2r")
+initial_data = ExtResource("2_2wroj")

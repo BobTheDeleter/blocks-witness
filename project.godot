@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Blocks witness"
+run/main_scene="uid://d2lclqgonr5nf"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Colours="*res://autoloads/colours.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=800
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.1728, 0.214507, 0.32, 1)

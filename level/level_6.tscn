@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5p1n4jhcygsc"]
+
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_8tsbn"]
+[ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="2_rqsg2"]
+[ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="3_k6y3a"]
+[ext_resource type="PackedScene" uid="uid://dqlbe8e76lhf7" path="res://piece/smashboy.tscn" id="4_3t5n2"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="5_3t5n2"]
+[ext_resource type="PackedScene" uid="uid://bvwm8rkmulr2y" path="res://piece/teewee.tscn" id="6_3t5n2"]
+[ext_resource type="PackedScene" uid="uid://b6qy08ffiogb5" path="res://piece/orange_ricky.tscn" id="6_v2dqh"]
+[ext_resource type="PackedScene" uid="uid://cgx0k13rfjl21" path="res://level/base/editor/editor.tscn" id="10_51knd"]
+[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="10_v2dqh"]
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_8tsbn")
+next = 7
+
+[node name="board" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_rqsg2")
+cell_size_px = 60
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_k6y3a")
+
+[node name="pieces" type="Node2D" parent="."]
+
+[node name="smashboy" parent="pieces" instance=ExtResource("4_3t5n2")]
+
+[node name="teewee" parent="pieces" instance=ExtResource("6_3t5n2")]
+
+[node name="orange_ricky" parent="pieces" instance=ExtResource("6_v2dqh")]
+
+[node name="elements" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="you_win" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_3t5n2")
+
+[node name="ui" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_v2dqh")
+
+[node name="editor" parent="." instance=ExtResource("10_51knd")]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0)
+board_size = Vector2i(4, 4)

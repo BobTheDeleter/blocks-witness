@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pblfm3cyqcry"]
+
+[ext_resource type="Script" uid="uid://wdnqjt5ge6ai" path="res://element/covered.gd" id="1_8701r"]
+
+[node name="covered" type="Node2D" groups=["element"]]
+script = ExtResource("1_8701r")

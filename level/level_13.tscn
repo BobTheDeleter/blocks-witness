@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=4 uid="uid://dvu8y8sq68eaf"]
+
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_7uqoj"]
+[ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="2_l4s2s"]
+[ext_resource type="PackedScene" uid="uid://paq8bq71x7r4" path="res://piece/cleveland_z.tscn" id="3_7uqoj"]
+[ext_resource type="PackedScene" uid="uid://djpdgfphcip0a" path="res://piece/blue_ricky.tscn" id="4_l4s2s"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="5_5gqsf"]
+[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="6_5pp4r"]
+[ext_resource type="PackedScene" uid="uid://cgx0k13rfjl21" path="res://level/base/editor/editor.tscn" id="7_vrih8"]
+[ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="8_5sn8u"]
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_7uqoj")
+
+[node name="board" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_l4s2s")
+
+[node name="pieces" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="cleveland_z" parent="pieces" instance=ExtResource("3_7uqoj")]
+
+[node name="blue_ricky" parent="pieces" instance=ExtResource("4_l4s2s")]
+
+[node name="elements" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="you_win" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_5gqsf")
+
+[node name="ui" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_5pp4r")
+
+[node name="editor" parent="." instance=ExtResource("7_vrih8")]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAAAAEAAAADAAAAAAAAAAMAAAADAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAAAAAAAAAAGAAAAAAA=")
+board_size = Vector2i(4, 4)
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_5sn8u")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PieceData" load_steps=2 format=3 uid="uid://dgil1qbgaie64"]
+
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="1_jnnyo"]
+
+[resource]
+script = ExtResource("1_jnnyo")
+blocks = PackedVector2Array(0, 0, 1, 0, 0, 1)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"

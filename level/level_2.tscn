@@ -1,0 +1,109 @@
+[gd_scene load_steps=18 format=3 uid="uid://bi8fxcihcwpi3"]
+
+[ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="1_bmgug"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_jq78i"]
+[ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="3_07kww"]
+[ext_resource type="PackedScene" uid="uid://pblfm3cyqcry" path="res://element/covered.tscn" id="4_jq78i"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="4_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://8dxybll1u0br" path="res://element/not_covered.tscn" id="5_lsnkt"]
+[ext_resource type="PackedScene" uid="uid://cj8pki05q1018" path="res://piece/piece.tscn" id="6_wj73x"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="7_0unm6"]
+[ext_resource type="Texture2D" uid="uid://5vuyf64x150p" path="res://mouse_right_outline.svg" id="8_7dov7"]
+[ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="9_ehv2h"]
+[ext_resource type="PackedScene" uid="uid://cgx0k13rfjl21" path="res://level/base/editor/editor.tscn" id="10_07kww"]
+[ext_resource type="Texture2D" uid="uid://did64eyl61y4g" path="res://ui/rotate_arrow.png" id="10_15wb7"]
+[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="10_lsnkt"]
+
+[sub_resource type="Resource" id="Resource_q42ux"]
+script = ExtResource("7_0unm6")
+blocks = PackedVector2Array(0, 0, 1, 0, 2, 0, 2, -1)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[sub_resource type="Resource" id="Resource_lsnkt"]
+script = ExtResource("7_0unm6")
+blocks = PackedVector2Array(0, 0, 0, 1, 0, 2, 1, 2)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[sub_resource type="Resource" id="Resource_s3q8p"]
+script = ExtResource("7_0unm6")
+blocks = PackedVector2Array(0, 0, 0, 1, 0, 2, 0, 3)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[sub_resource type="Resource" id="Resource_jq78i"]
+script = ExtResource("7_0unm6")
+blocks = PackedVector2Array(0, 0, 1, 0, 0, 1)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_jq78i")
+
+[node name="board" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_bmgug")
+cell_size_px = 60
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_07kww")
+
+[node name="pieces" type="Node2D" parent="."]
+
+[node name="piece" parent="pieces" instance=ExtResource("6_wj73x")]
+initial_data = SubResource("Resource_q42ux")
+
+[node name="piece2" parent="pieces" instance=ExtResource("6_wj73x")]
+initial_data = SubResource("Resource_lsnkt")
+
+[node name="piece3" parent="pieces" instance=ExtResource("6_wj73x")]
+initial_data = SubResource("Resource_s3q8p")
+
+[node name="piece4" parent="pieces" instance=ExtResource("6_wj73x")]
+initial_data = SubResource("Resource_jq78i")
+
+[node name="elements" type="Node2D" parent="."]
+
+[node name="covered" parent="elements" instance=ExtResource("4_jq78i")]
+position_grid = Vector2i(0, 3)
+
+[node name="covered2" parent="elements" instance=ExtResource("4_jq78i")]
+position_grid = Vector2i(1, 3)
+
+[node name="covered3" parent="elements" instance=ExtResource("4_jq78i")]
+position_grid = Vector2i(2, 3)
+
+[node name="covered4" parent="elements" instance=ExtResource("4_jq78i")]
+position_grid = Vector2i(3, 3)
+
+[node name="not_covered" parent="elements" instance=ExtResource("5_lsnkt")]
+position_grid = Vector2i(3, 0)
+
+[node name="you_win" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_lfnxh")
+
+[node name="editor" parent="." instance=ExtResource("10_07kww")]
+board_size = Vector2i(4, 4)
+
+[node name="ui" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_lsnkt")
+
+[node name="MouseRightOutline" type="Sprite2D" parent="ui"]
+position = Vector2(100, 100)
+texture = ExtResource("8_7dov7")
+
+[node name="ExamplePiece" type="Sprite2D" parent="ui/MouseRightOutline"]
+texture_filter = 1
+position = Vector2(80, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("9_ehv2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/MouseRightOutline/ExamplePiece"]
+texture_filter = 2
+position = Vector2(15, 15)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("10_15wb7")

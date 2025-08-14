@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuiac34jkiqin"]
+
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_q3845"]
+[ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="2_vendn"]
+[ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="3_xy3je"]
+[ext_resource type="PackedScene" uid="uid://t6ua0aseg4sv" path="res://piece/rhode_island_z.tscn" id="5_5cm8g"]
+[ext_resource type="PackedScene" uid="uid://b6qy08ffiogb5" path="res://piece/orange_ricky.tscn" id="5_cicrg"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="5_q3845"]
+[ext_resource type="PackedScene" uid="uid://cgx0k13rfjl21" path="res://level/base/editor/editor.tscn" id="10_76sf5"]
+[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="10_cicrg"]
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_q3845")
+next = 8
+
+[node name="board" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vendn")
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_xy3je")
+
+[node name="pieces" type="Node2D" parent="."]
+
+[node name="rhode_island_z" parent="pieces" instance=ExtResource("5_5cm8g")]
+
+[node name="orange_ricky" parent="pieces" instance=ExtResource("5_cicrg")]
+
+[node name="elements" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="you_win" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_q3845")
+
+[node name="ui" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_cicrg")
+
+[node name="editor" parent="." instance=ExtResource("10_76sf5")]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0)
+board_size = Vector2i(3, 4)

@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://cfg4bin1l0lcc"]
+
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_ryrav"]
+[ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="2_eow3j"]
+[ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="3_aive4"]
+[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://pblfm3cyqcry" path="res://element/covered.tscn" id="8_5rr72"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="8_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://8dxybll1u0br" path="res://element/not_covered.tscn" id="9_gyffv"]
+[ext_resource type="PackedScene" uid="uid://cj8pki05q1018" path="res://piece/piece.tscn" id="10_gyffv"]
+[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="11_nmsli"]
+[ext_resource type="PackedScene" uid="uid://cgx0k13rfjl21" path="res://level/base/editor/editor.tscn" id="13_aive4"]
+
+[sub_resource type="Resource" id="Resource_eow3j"]
+script = ExtResource("4_fc0e3")
+blocks = PackedVector2Array(0, 0, 1, 0, 2, 0, 2, 1)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[sub_resource type="Resource" id="Resource_1pe0h"]
+script = ExtResource("4_fc0e3")
+blocks = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 2)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[sub_resource type="Resource" id="Resource_gyffv"]
+script = ExtResource("4_fc0e3")
+blocks = PackedVector2Array(0, 0, 0, 1, 0, 2, 1, 2)
+type = 0
+metadata/_custom_type_script = "uid://cmp6whuwah5wl"
+
+[node name="level_1" type="Node2D"]
+script = ExtResource("1_ryrav")
+
+[node name="board" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_eow3j")
+cell_size_px = 60
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_aive4")
+
+[node name="pieces" type="Node2D" parent="."]
+
+[node name="piece" type="Node2D" parent="pieces" groups=["piece"]]
+script = ExtResource("3_feb5d")
+initial_data = SubResource("Resource_eow3j")
+
+[node name="piece2" parent="pieces" instance=ExtResource("10_gyffv")]
+initial_data = SubResource("Resource_1pe0h")
+
+[node name="piece3" parent="pieces" instance=ExtResource("10_gyffv")]
+initial_data = SubResource("Resource_gyffv")
+
+[node name="elements" type="Node2D" parent="."]
+
+[node name="covered" parent="elements" instance=ExtResource("8_5rr72")]
+position_grid = Vector2i(2, 0)
+
+[node name="not_covered" parent="elements" instance=ExtResource("9_gyffv")]
+position_grid = Vector2i(3, 2)
+
+[node name="not_covered2" parent="elements" instance=ExtResource("9_gyffv")]
+position_grid = Vector2i(0, 2)
+
+[node name="not_covered3" parent="elements" instance=ExtResource("9_gyffv")]
+position_grid = Vector2i(1, 3)
+
+[node name="you_win" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_j5wjh")
+
+[node name="ui" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_nmsli")
+
+[node name="editor" parent="." instance=ExtResource("13_aive4")]
+unique_name_in_owner = true
+board_size = Vector2i(4, 4)

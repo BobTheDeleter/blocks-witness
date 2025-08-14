@@ -1,0 +1,82 @@
+[gd_scene load_steps=17 format=4 uid="uid://b7tbju204yali"]
+
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="1_5bml6"]
+[ext_resource type="Script" uid="uid://bppt7nii1u6nq" path="res://level/base/board.gd" id="1_ho0ug"]
+[ext_resource type="Script" uid="uid://dy6a7udvbhkn" path="res://level/base/camera.gd" id="3_5bml6"]
+[ext_resource type="PackedScene" uid="uid://djpdgfphcip0a" path="res://piece/blue_ricky.tscn" id="4_abbgq"]
+[ext_resource type="Texture2D" uid="uid://ctcxwun187i15" path="res://ui/you-win-cool.png" id="4_k2ajo"]
+[ext_resource type="Texture2D" uid="uid://doqr63dbmfmg" path="res://level/base/editor/level_editor_icons.png" id="5_6kkia"]
+[ext_resource type="PackedScene" uid="uid://b6qy08ffiogb5" path="res://piece/orange_ricky.tscn" id="5_60q4w"]
+[ext_resource type="Script" uid="uid://wv4uoy4vmowe" path="res://level/base/ui.gd" id="5_lxcpb"]
+[ext_resource type="Script" uid="uid://b4lwnncnouqjn" path="res://level/base/editor/editor.gd" id="6_fksli"]
+[ext_resource type="PackedScene" uid="uid://t6ua0aseg4sv" path="res://piece/rhode_island_z.tscn" id="6_qf4d6"]
+[ext_resource type="PackedScene" uid="uid://pblfm3cyqcry" path="res://element/covered.tscn" id="7_lyejb"]
+[ext_resource type="PackedScene" uid="uid://ddvwouwknskli" path="res://piece/hero.tscn" id="7_vmi0j"]
+[ext_resource type="PackedScene" uid="uid://d316ydl6xwlct" path="res://element/partition_dot.tscn" id="8_85qo6"]
+[ext_resource type="PackedScene" uid="uid://8dxybll1u0br" path="res://element/not_covered.tscn" id="9_6vtyo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rg8l"]
+texture = ExtResource("5_6kkia")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_1 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = Color(1, 1, 1, 1)
+2:0/0/custom_data_1 = 2
+3:0/0 = 0
+3:0/0/custom_data_1 = 2
+
+[sub_resource type="TileSet" id="TileSet_6w4ab"]
+tile_size = Vector2i(8, 8)
+custom_data_layer_0/name = "colour"
+custom_data_layer_0/type = 20
+custom_data_layer_1/name = "type"
+custom_data_layer_1/type = 2
+sources/0 = SubResource("TileSetAtlasSource_0rg8l")
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_5bml6")
+
+[node name="board" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ho0ug")
+cell_size_px = 40
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_5bml6")
+
+[node name="pieces" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="blue_ricky" parent="pieces" instance=ExtResource("4_abbgq")]
+
+[node name="orange_ricky" parent="pieces" instance=ExtResource("5_60q4w")]
+
+[node name="rhode_island_z" parent="pieces" instance=ExtResource("6_qf4d6")]
+
+[node name="hero" parent="pieces" instance=ExtResource("7_vmi0j")]
+
+[node name="orange_ricky2" parent="pieces" instance=ExtResource("5_60q4w")]
+
+[node name="elements" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="you_win" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_k2ajo")
+
+[node name="ui" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_lxcpb")
+
+[node name="editor" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAAAAAAAAAIAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAACAAIAAAACAAAAAAAAAAEAAAADAAAAAAAAAAMAAAADAAAAAAAAAAQAAAADAAAAAAAAAAUAAAADAAAAAAABAAUAAAADAAAAAAACAAMAAAACAAAAAAACAAUAAAADAAAAAAADAAAAAAADAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAUAAAADAAAAAAAEAAAAAAADAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAAEAAUAAAADAAAAAAAFAAAAAAADAAAAAAAFAAEAAAADAAAAAAAFAAIAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAUAAAADAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_6w4ab")
+script = ExtResource("6_fksli")
+board_size = Vector2i(6, 6)
+covered_packed_scene = ExtResource("7_lyejb")
+partition_dot_packed_scene = ExtResource("8_85qo6")
+not_covered_packed_scene = ExtResource("9_6vtyo")

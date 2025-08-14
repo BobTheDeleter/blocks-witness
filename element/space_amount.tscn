@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo850tma3ktxh"]
+
+[ext_resource type="Script" uid="uid://bm1osrt1g0jra" path="res://element/space_amount.gd" id="1_0b13h"]
+
+[node name="space_amount" type="Node2D" groups=["element"]]
+script = ExtResource("1_0b13h")
+number = 1

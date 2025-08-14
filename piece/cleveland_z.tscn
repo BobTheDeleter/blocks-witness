@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://paq8bq71x7r4"]
+
+[ext_resource type="Script" uid="uid://c3rlubt3086xb" path="res://piece/piece.gd" id="1_md2tx"]
+[ext_resource type="Resource" uid="uid://fvq3b6xtnafs" path="res://piece/cleveland_z.tres" id="2_osry1"]
+
+[node name="cleveland_z" type="Node2D" groups=["piece"]]
+script = ExtResource("1_md2tx")
+initial_data = ExtResource("2_osry1")
