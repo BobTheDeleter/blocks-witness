@@ -18,15 +18,19 @@ func _ready() -> void:
 	Progression.current_level = level_num
 	initialise_camera()
 	position_ui()
-	generate_elements()
 	generate_pieces()
+	generate_elements()
 	initialise_board()
 
+	clear()
+
 const board_packed_scene = preload("res://level/base/board.tscn")
+var board: Board
 func initialise_board() -> void:
-	var board: Board = board_packed_scene.instantiate()
+	board = board_packed_scene.instantiate()
 	board.size_grid = data.board_size
 	board.cell_size_px = data.cell_size_px
+	board.line_thickness = data.line_thickness
 	add_child(board)
 	board.initialise()
 
@@ -56,20 +60,28 @@ func generate_elements() -> void:
 				add_child(element)
 
 const camera_packed_scene = preload("res://level/base/camera.tscn")
+var camera
 func initialise_camera() -> void:
-	var camera: GameCamera = camera_packed_scene.instantiate()
-	camera.global_position = data.board_size * data.cell_size_px
+	camera = camera_packed_scene.instantiate()
 	add_child(camera)
+	camera.global_position = data.board_size * data.cell_size_px / 2
 
 const solution_text_packed_scene = preload("res://level/base/solution_text.tscn")
+var solution_text
 func position_ui() -> void:
-	var text = solution_text_packed_scene.instantiate()
-	text.global_position = Vector2(data.board_size.x * data.cell_size_px / 2.0, -100)
-	add_child(text)
+	solution_text = solution_text_packed_scene.instantiate()
+	solution_text.global_position = Vector2(data.board_size.x * data.cell_size_px / 2.0, -100)
+	add_child(solution_text)
+
+	if get_tree().get_nodes_in_group("ui").size() > 0:
+		get_tree().get_nodes_in_group("ui")[0].global_position = camera.screen_to_world_px(Vector2.ZERO)
 
 const piece_packed_scene = preload("res://piece/piece.tscn")
 func generate_pieces() -> void:
 	for piece_data in data.pieces:
 		var piece: Piece = piece_packed_scene.instantiate()
-		piece.piece_data = piece_data
+		piece.initial_data = piece_data
+		piece.cell_size_px = data.cell_size_px
+		piece.line_thickness = data.line_thickness
 		add_child(piece)
+		piece.queue_redraw()

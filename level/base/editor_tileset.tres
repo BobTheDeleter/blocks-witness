@@ -1,0 +1,43 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bmgrgrk1mlwsg"]
+
+[ext_resource type="Texture2D" uid="uid://titput8ps7q5" path="res://level/base/level_editor_icons.png" id="1_11xht"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30ajw"]
+texture = ExtResource("1_11xht")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_2 = 1
+2:0/0 = 0
+2:0/0/custom_data_1 = Color(1, 1, 1, 1)
+2:0/0/custom_data_2 = 2
+3:0/0 = 0
+3:0/0/custom_data_2 = 2
+4:0/0 = 0
+4:0/0/custom_data_0 = 1
+4:0/0/custom_data_2 = 3
+5:0/0 = 0
+5:0/0/custom_data_0 = 2
+5:0/0/custom_data_2 = 3
+6:0/0 = 0
+6:0/0/custom_data_0 = 3
+6:0/0/custom_data_2 = 3
+7:0/0 = 0
+7:0/0/custom_data_0 = 4
+7:0/0/custom_data_2 = 3
+1:1/0 = 0
+1:1/0/custom_data_0 = 6
+1:1/0/custom_data_2 = 3
+0:1/0 = 0
+0:1/0/custom_data_0 = 5
+0:1/0/custom_data_2 = 3
+
+[resource]
+tile_size = Vector2i(8, 8)
+custom_data_layer_0/name = "number"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "colour"
+custom_data_layer_1/type = 20
+custom_data_layer_2/name = "type"
+custom_data_layer_2/type = 2
+sources/0 = SubResource("TileSetAtlasSource_30ajw")

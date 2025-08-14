@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Blocks witness"
+run/main_scene="uid://2bkrbn7f0vvq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,6 +29,10 @@ window/size/viewport_height=800
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+ui=""
 
 [rendering]
 

@@ -1,6 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://2bkrbn7f0vvq"]
+[gd_scene load_steps=10 format=3 uid="uid://2bkrbn7f0vvq"]
 
-[sub_resource type="TileSet" id="TileSet_c04qv"]
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_8i3ps"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_30ajw"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_8i3ps"]
+[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="4_kefbq"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="5_gn3tg"]
+[ext_resource type="Texture2D" uid="uid://cxkstissdjq73" path="res://ui/mouse_left_outline.svg" id="6_gn3tg"]
+[ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="7_farmd"]
+[ext_resource type="Texture2D" uid="uid://cprn0mr75fe5u" path="res://ui/arrow-up-solid-full.svg" id="8_farmd"]
 
-[node name="0" type="TileMapLayer"]
-tile_set = SubResource("TileSet_c04qv")
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("5_gn3tg")
+board_size = Vector2i(3, 2)
+pieces = Array[ExtResource("3_8i3ps")]([ExtResource("4_kefbq")])
+line_thickness = 2
+cell_size_px = 80
+piece_spacing_multiplier = 1.0
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_8i3ps")
+script = ExtResource("2_30ajw")
+data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ui"]
+position = Vector2(50, 50)
+texture = ExtResource("6_gn3tg")
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D"]
+position = Vector2(60, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("7_farmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D/Sprite2D"]
+position = Vector2(15, 15)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("8_farmd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ui"]
+position = Vector2(50, 120)
+texture = ExtResource("6_gn3tg")
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D2"]
+position = Vector2(60, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("7_farmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D2/Sprite2D"]
+position = Vector2(15, 15)
+rotation = 3.14159
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("8_farmd")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=11 format=4 uid="uid://cg8rse4die8nu"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_k0een"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_ua4yl"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_n14a1"]
+[ext_resource type="Resource" uid="uid://bb8bdpnygl0t0" path="res://piece/hero.tres" id="4_8r5sw"]
+[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="5_b7h1a"]
+[ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="5_pck6j"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="6_b7h1a"]
+[ext_resource type="Resource" uid="uid://tnv88pxer5pe" path="res://piece/teewee.tres" id="7_p778m"]
+[ext_resource type="Resource" uid="uid://bonbrvciedp5k" path="res://piece/rhode_island_z.tres" id="8_xpo1p"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("6_b7h1a")
+board_size = Vector2i(6, 6)
+pieces = Array[ExtResource("3_n14a1")]([ExtResource("4_8r5sw"), ExtResource("5_b7h1a"), ExtResource("5_pck6j"), ExtResource("7_p778m"), ExtResource("8_xpo1p")])
+line_thickness = 2
+cell_size_px = 60
+piece_spacing_multiplier = 0.6
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAABAAAAAAACAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAEAAAABAAIAAAADAAAAAAABAAMAAAADAAAAAAACAAEAAAADAAAAAAAAAAUAAAAAAAAAAAABAAUAAAACAAAAAAADAAQAAAABAAAAAAAEAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAHAAAAAAA=")
+tile_set = ExtResource("1_k0een")
+script = ExtResource("2_ua4yl")
+data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
+texture_filter = 1

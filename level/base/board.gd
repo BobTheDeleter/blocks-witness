@@ -5,8 +5,8 @@ signal valid_solution
 signal invalid_solution
 
 var size_grid: Vector2i
-var cell_size_px: int = 80
-var line_thickness: float = 2.0
+var cell_size_px: int
+var line_thickness: int
 
 var area2d: Area2D
 
@@ -144,5 +144,6 @@ func place_palette_pieces() -> void:
 	for i in range(palette_pieces.size()):
 		var piece = palette_pieces[i]
 		var angle = angle_step * i
-		var piece_new_position_px = Vector2(cos(angle), -sin(angle)) * (diag_px + piece.bounding_rect_px.size.length() / 2) / 2 - piece.bounding_rect_px.position + Vector2(cell_size_px, cell_size_px)
-		piece.global_position = piece_new_position_px			
+		var piece_new_position_px = Vector2(cos(angle), -sin(angle)) * diag_px * get_parent().data.piece_spacing_multiplier + size_px / 2 - piece.bounding_rect_px.size / 2 - piece.bounding_rect_px.position
+		piece.global_position = piece_new_position_px
+		piece.move_out_of_board()

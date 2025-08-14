@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl1lvogt1qaac"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_mytdd"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_vi4je"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_tygcf"]
+[ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="4_gnntt"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="5_pbkh4"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("5_pbkh4")
+board_size = Vector2i(3, 3)
+pieces = Array[ExtResource("3_tygcf")]([ExtResource("4_gnntt")])
+line_thickness = 2
+cell_size_px = 100
+piece_spacing_multiplier = 1.0
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_mytdd")
+script = ExtResource("2_vi4je")
+data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
+texture_filter = 1

@@ -5,8 +5,8 @@ signal win_text_over
 const you_win_image = preload("res://level/base/you_win.png")
 const you_suck_image = preload("res://level/base/you_suck.png")
 
-const you_win_time: float = 5
-const you_suck_time: float = 3
+const you_win_time: float = 3
+const you_suck_time: float = 2
 
 func _ready() -> void:
     visible = false

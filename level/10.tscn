@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://jgrsgmx1ybar"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_o8q4l"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_31ypi"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_cweos"]
+[ext_resource type="Resource" uid="uid://bonbrvciedp5k" path="res://piece/rhode_island_z.tres" id="4_q11bc"]
+[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="4_xqoau"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="7_j25s5"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("7_j25s5")
+board_size = Vector2i(3, 4)
+pieces = Array[ExtResource("3_cweos")]([ExtResource("4_q11bc"), ExtResource("4_xqoau")])
+line_thickness = 2
+cell_size_px = 80
+piece_spacing_multiplier = 1.0
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_o8q4l")
+script = ExtResource("2_31ypi")
+data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
+texture_filter = 1

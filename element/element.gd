@@ -1,6 +1,6 @@
 class_name Element extends Node2D
 
-@export var position_grid: Vector2i
+var position_grid: Vector2i
 
 enum TYPE {
 	COVERED,
