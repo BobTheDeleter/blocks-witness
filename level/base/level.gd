@@ -1,8 +1,6 @@
 class_name Level
 extends TileMapLayer
 
-signal change_level(level_num: int)
-
 @export var data: LevelData
 
 # Get the last part of the file name to determine the next level
@@ -10,14 +8,15 @@ signal change_level(level_num: int)
 
 func _on_valid_solution():
 	Progression.highest_completed_level = max(level_num, Progression.highest_completed_level)
-	$solution_text.win()
-	create_next_level_button()
+	if Progression.does_level_exist(level_num + 1):
+		$solution_text.win()
+		create_next_level_button()
+	else:
+		$solution_text.finish()
 func _on_invalid_solution():
 	$solution_text.lose()
 
 func _ready() -> void:
-	change_level.connect(Progression._on_change_level)
-
 	Progression.current_level = level_num
 	initialise_camera()
 	generate_pieces()
@@ -30,7 +29,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_level"):
-		change_level.emit(level_num)
+		Progression._on_change_level(level_num)
 
 const board_packed_scene = preload("res://level/base/board.tscn")
 var board: Board
