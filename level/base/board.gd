@@ -90,28 +90,29 @@ func _on_piece_placed(piece: Piece) -> void:
 	else:
 		piece.state = piece.State.IN_PALETTE
 
-	check_for_solution()
 	for other_piece: Piece in pieces:
 		if other_piece.state == other_piece.State.IN_PALETTE:
 			other_piece.move_out_of_board()
+
+	var all_placed = true
+	for other_piece: Piece in pieces:
+		if other_piece.state != other_piece.State.IN_BOARD:
+			all_placed = false
+	if all_placed:
+		check_for_solution()
 
 @onready var tween: Tween
 func check_for_solution() -> void:
 	if tween:
 		tween.kill()
+	tween = create_tween()
 
 	for element: Element in elements:
 		element.initialise(self)
-
-	for piece: Piece in pieces:
-		if piece.state == piece.State.IN_PALETTE:
-			return
 	
 	var valid = true
 	for element: Element in elements:
 		if not element.check(data):
-			if not tween:
-				tween = create_tween()
 			valid = false
 			var original_colour = element.colour
 			element.colour = Colours.RED
@@ -119,6 +120,7 @@ func check_for_solution() -> void:
 
 	if valid:
 		valid_solution.emit()
+		tween.kill()
 	else:
 		invalid_solution.emit()
 

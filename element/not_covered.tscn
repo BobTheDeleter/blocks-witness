@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://jm4plf8g6d5b" path="res://element/not_covered.gd" id="1_tmkbw"]
 
 [node name="not_covered" type="Node2D" groups=["element"]]
+z_index = 3
 script = ExtResource("1_tmkbw")

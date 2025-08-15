@@ -28,6 +28,10 @@ func _ready() -> void:
 
 	clear()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset_level"):
+		change_level.emit(level_num)
+
 const board_packed_scene = preload("res://level/base/board.tscn")
 var board: Board
 func initialise_board() -> void:
@@ -41,7 +45,7 @@ func initialise_board() -> void:
 const covered_packed_scene = preload("res://element/covered.tscn")
 const not_covered_packed_scene = preload("res://element/not_covered.tscn")
 const partition_dot_packed_scene = preload("res://element/partition_dot.tscn")
-const space_amount_packed_scene = preload("res://element/space_amount.tscn")
+const space_amount_packed_scene = preload("res://element/cell_count.tscn")
 func generate_elements() -> void:
 	for x in data.board_size.x:
 		for y in data.board_size.y:
@@ -94,19 +98,19 @@ const level_select_arrow_packed_scene = preload("res://level/base/level_select_a
 func create_level_select_arrows() -> void:
 	if level_num > 0:
 		var left_arrow = level_select_arrow_packed_scene.instantiate()
+		$ui.add_child(left_arrow)
 		left_arrow.rotation = PI
 		left_arrow.pressed.connect(Progression._on_change_level.bind(level_num - 1))
-		$ui.add_child(left_arrow)
 		left_arrow.position = Vector2(50, DisplayServer.window_get_size().y / 2.0)
 	
 	if Progression.highest_completed_level >= level_num:
 		var right_arrow = level_select_arrow_packed_scene.instantiate()
-		right_arrow.pressed.connect(Progression._on_change_level.bind(level_num + 1))
 		$ui.add_child(right_arrow)
+		right_arrow.pressed.connect(Progression._on_change_level.bind(level_num + 1))
 		right_arrow.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)
 
 func create_next_level_button() -> void:
 	var next_level_button = level_select_arrow_packed_scene.instantiate()
-	next_level_button.pressed.connect(Progression._on_change_level.bind(level_num + 1))
 	$ui.add_child(next_level_button)
+	next_level_button.pressed.connect(Progression._on_change_level.bind(level_num + 1))
 	next_level_button.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)

@@ -18,15 +18,18 @@ var origin_position_grid: Vector2i
 func _ready() -> void:
 	blocks = initial_data.blocks
 
+	for boundary_point in initial_data.boundary:
+		boundary.append(boundary_point*cell_size_px)
+
 	calculate_bounding_rect()
 	create_area2d()
 	area2d.mouse_entered.connect(_on_mouse_entered)
 	area2d.mouse_exited.connect(_on_mouse_exited)
 	area2d.input_event.connect(_on_input_event)
 
-	const offset_range = 0.3
-	var colour_offset = Color(randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range))
-	colour = Colours.YELLOW + colour_offset
+	# const offset_range = 0.3
+	# var colour_offset = Color(randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range))
+	colour = Colours.YELLOW # + colour_offset
 
 var bounding_rect_px: Rect2
 func calculate_bounding_rect() -> void:
@@ -57,10 +60,14 @@ func create_area2d() -> void:
 
 var line_thickness: int
 var colour: Color
+var boundary: Array[Vector2i] = []
+var line_colour: Color = Colours.BLUE
 func _draw() -> void:
 	for block_pos in blocks:
 		var local_pos = Vector2(block_pos * cell_size_px)
 		draw_rect(Rect2(local_pos + Vector2(line_thickness, line_thickness) * 2, Vector2(cell_size_px, cell_size_px) - Vector2(line_thickness, line_thickness) * 4), colour)
+	
+	draw_multiline(boundary, line_colour, line_thickness * 2)
 
 func _on_mouse_entered() -> void:
 	# Optional: highlight or change appearance
@@ -97,6 +104,12 @@ func rotate_piece() -> void:
 	blocks = new_blocks
 	calculate_bounding_rect()
 	create_area2d()
+
+	var new_boundary: Array[Vector2i] = []
+	for point in boundary:
+		new_boundary.append(Vector2i(-point.y, point.x) + Vector2i(cell_size_px, 0))
+	boundary = new_boundary
+
 	queue_redraw()
 
 func _process(_delta):

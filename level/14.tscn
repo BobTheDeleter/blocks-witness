@@ -16,7 +16,7 @@ piece_spacing_multiplier = 1.0
 metadata/_custom_type_script = "uid://dkogue6fhshum"
 
 [node name="level" type="TileMapLayer"]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0)
 tile_set = ExtResource("1_6wrf2")
 script = ExtResource("2_j3rvv")
 data = SubResource("Resource_farmd")

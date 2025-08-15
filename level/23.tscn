@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2hkdwl1cvu2n"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_rfvao"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_d5m6h"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_t7y2v"]
+[ext_resource type="Resource" uid="uid://bb8bdpnygl0t0" path="res://piece/hero.tres" id="4_73bkc"]
+[ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="5_5iu76"]
+[ext_resource type="Resource" uid="uid://cff4jf43xsxp8" path="res://piece/penta_ricky.tres" id="6_g8eh6"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="7_e1c4s"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("7_e1c4s")
+board_size = Vector2i(4, 4)
+pieces = Array[ExtResource("3_t7y2v")]([ExtResource("4_73bkc"), ExtResource("5_5iu76"), ExtResource("6_g8eh6")])
+line_thickness = 2
+cell_size_px = 60
+piece_spacing_multiplier = 0.6
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 6, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 6, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_rfvao")
+script = ExtResource("2_d5m6h")
+data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
+texture_filter = 1

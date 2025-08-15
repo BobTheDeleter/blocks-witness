@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2bkrbn7f0vvq"]
+[gd_scene load_steps=12 format=3 uid="uid://2bkrbn7f0vvq"]
 
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_8i3ps"]
 [ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_30ajw"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cxkstissdjq73" path="res://ui/mouse_left_outline.svg" id="6_gn3tg"]
 [ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="7_farmd"]
 [ext_resource type="Texture2D" uid="uid://cprn0mr75fe5u" path="res://ui/arrow-up-solid-full.svg" id="8_farmd"]
+[ext_resource type="Texture2D" uid="uid://bkwon5ak7p6ug" path="res://ui/keyboard_r_outline.svg" id="9_mgcjh"]
+[ext_resource type="Texture2D" uid="uid://did64eyl61y4g" path="res://ui/rotate_arrow.png" id="10_0jo0j"]
 
 [sub_resource type="Resource" id="Resource_farmd"]
 script = ExtResource("5_gn3tg")
@@ -55,3 +57,12 @@ position = Vector2(15, 15)
 rotation = 3.14159
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("8_farmd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ui"]
+position = Vector2(50, 190)
+texture = ExtResource("9_mgcjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D3"]
+position = Vector2(60, 0)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_0jo0j")

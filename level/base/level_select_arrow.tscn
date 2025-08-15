@@ -7,6 +7,7 @@
 size = Vector2(84, 84)
 
 [node name="level_select_arrow" type="Node2D"]
+z_index = 2
 script = ExtResource("1_yjja0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

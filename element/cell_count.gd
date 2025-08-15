@@ -6,8 +6,7 @@ var type = TYPE.SPACE_AMOUNT
 
 func check(data) -> bool:
 	checked_cells = []
-	if data[position_grid]["piece"] != null:
-		return false
+	in_empty_space = data[position_grid]["piece"] == null
 	return check_recursive(data, position_grid) - 1 == number
 
 const orthogonal_offsets = [
@@ -15,6 +14,7 @@ const orthogonal_offsets = [
 	Vector2i(0, 1), Vector2i(0, -1)
 ]
 var checked_cells: Array = []
+var in_empty_space: bool = false
 func check_recursive(data, cell_grid: Vector2i) -> int:
 	var count = 1 # base case, surrounded by uncountable cells, only count itself
 	for offset in orthogonal_offsets:
@@ -24,10 +24,9 @@ func check_recursive(data, cell_grid: Vector2i) -> int:
 		checked_cells.append(neighbour)
 		if not data.has(neighbour):
 			continue
-		if data[neighbour]["piece"] != null:
+		if (data[neighbour]["piece"] == null) != in_empty_space:
 			continue
 
-		checked_cells.append(neighbour)
 		count += check_recursive(data, neighbour)
 
 	return count

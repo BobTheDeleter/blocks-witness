@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://dxeykfbu0mr3w" path="res://level/base/solution_text.gd" id="1_0olpf"]
 
 [node name="solution_text" type="Sprite2D"]
+z_index = 5
 script = ExtResource("1_0olpf")

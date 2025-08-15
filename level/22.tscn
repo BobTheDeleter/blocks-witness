@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxresr1r5irnn"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_luc2o"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_bviqm"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_1hiuk"]
+[ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="6_r0yo7"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="9_yogfm"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("9_yogfm")
+board_size = Vector2i(3, 2)
+pieces = Array[ExtResource("3_1hiuk")]([ExtResource("6_r0yo7")])
+line_thickness = 2
+cell_size_px = 100
+piece_spacing_multiplier = 0.6
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_luc2o")
+script = ExtResource("2_bviqm")
+data = SubResource("Resource_farmd")
+
+[node name="ui" type="Node2D" parent="." groups=["ui"]]
+texture_filter = 1
