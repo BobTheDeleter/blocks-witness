@@ -24,6 +24,10 @@ func _ready() -> void:
 	area2d.mouse_exited.connect(_on_mouse_exited)
 	area2d.input_event.connect(_on_input_event)
 
+	const offset_range = 0.3
+	var colour_offset = Color(randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range))
+	colour = Colours.YELLOW + colour_offset
+
 var bounding_rect_px: Rect2
 func calculate_bounding_rect() -> void:
 	var top_left = Vector2(INF, INF)
@@ -52,10 +56,11 @@ func create_area2d() -> void:
 		area2d.add_child(collision)
 
 var line_thickness: int
+var colour: Color
 func _draw() -> void:
 	for block_pos in blocks:
 		var local_pos = Vector2(block_pos * cell_size_px)
-		draw_rect(Rect2(local_pos + Vector2(line_thickness, line_thickness) * 2, Vector2(cell_size_px, cell_size_px) - Vector2(line_thickness, line_thickness) * 4), Colours.YELLOW)
+		draw_rect(Rect2(local_pos + Vector2(line_thickness, line_thickness) * 2, Vector2(cell_size_px, cell_size_px) - Vector2(line_thickness, line_thickness) * 4), colour)
 
 func _on_mouse_entered() -> void:
 	# Optional: highlight or change appearance
