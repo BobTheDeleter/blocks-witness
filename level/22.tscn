@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://q4g703adhyit"]
+[gd_scene load_steps=12 format=4 uid="uid://q4g703adhyit"]
 
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_luc2o"]
-[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_bviqm"]
+[ext_resource type="Script" uid="uid://6pxhjg0i6mlj" path="res://level/base/level_bonus.gd" id="2_68cim"]
 [ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_1hiuk"]
 [ext_resource type="Resource" uid="uid://bb8bdpnygl0t0" path="res://piece/hero.tres" id="4_luc2o"]
 [ext_resource type="Resource" uid="uid://tnv88pxer5pe" path="res://piece/teewee.tres" id="5_560ra"]
@@ -9,21 +9,27 @@
 [ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="6_r0yo7"]
 [ext_resource type="Resource" uid="uid://bonbrvciedp5k" path="res://piece/rhode_island_z.tres" id="8_1hiuk"]
 [ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="9_yogfm"]
+[ext_resource type="Texture2D" uid="uid://b228jn4lt65y1" path="res://level/base/bonus_level.png" id="10_bviqm"]
 
-[sub_resource type="Resource" id="Resource_farmd"]
+[sub_resource type="Resource" id="Resource_luc2o"]
 script = ExtResource("9_yogfm")
 board_size = Vector2i(6, 6)
-pieces = Array[ExtResource("3_1hiuk")]([ExtResource("4_luc2o"), ExtResource("5_bviqm"), ExtResource("6_r0yo7"), ExtResource("5_560ra"), ExtResource("8_1hiuk")])
+pieces = Array[ExtResource("3_1hiuk")]([ExtResource("4_luc2o"), ExtResource("5_560ra"), ExtResource("5_bviqm"), ExtResource("6_r0yo7"), ExtResource("8_1hiuk")])
 line_thickness = 2
 cell_size_px = 60
-piece_spacing_multiplier = 0.6
+piece_spacing_multiplier = 0.75
 metadata/_custom_type_script = "uid://dkogue6fhshum"
 
 [node name="level" type="TileMapLayer"]
 tile_map_data = PackedByteArray("AAABAAAAAAACAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAEAAAABAAIAAAADAAAAAAABAAMAAAADAAAAAAACAAEAAAADAAAAAAAAAAUAAAAAAAAAAAABAAUAAAACAAAAAAADAAQAAAABAAAAAAAEAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAHAAAAAAA=")
 tile_set = ExtResource("1_luc2o")
-script = ExtResource("2_bviqm")
-data = SubResource("Resource_farmd")
+script = ExtResource("2_68cim")
+data = SubResource("Resource_luc2o")
 
 [node name="ui" type="Node2D" parent="." groups=["ui"]]
 texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ui"]
+position = Vector2(693, 79)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_bviqm")

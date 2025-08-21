@@ -1,6 +1,6 @@
 extends Node
 
-var highest_completed_level: int = 100
+var highest_completed_level: int = -1
 var current_level: int = -1:
 	set(value):
 		highest_completed_level = max(value - 1, highest_completed_level)

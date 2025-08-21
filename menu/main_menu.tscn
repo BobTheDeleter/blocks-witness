@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://wjfu375bgaod"]
+
+[ext_resource type="Script" uid="uid://crw0xudrihk47" path="res://menu/main_menu.gd" id="1_f5okj"]
+[ext_resource type="Texture2D" uid="uid://d1s0vbvtia8ci" path="res://level/base/title.png" id="2_o5w3e"]
+[ext_resource type="Texture2D" uid="uid://bxf833nbxd1ub" path="res://addons/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Square-Medium/Play/Default.svg" id="3_1x3cv"]
+[ext_resource type="Script" uid="uid://blo0suh0b2sv7" path="res://menu/play.gd" id="4_jc45y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8mfa"]
+size = Vector2(92, 88)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_f5okj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -198)
+texture = ExtResource("2_o5w3e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("3_1x3cv")
+script = ExtResource("4_jc45y")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D"]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_s8mfa")
+
+[connection signal="input_event" from="Sprite2D2/Area2D" to="Sprite2D2" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Sprite2D2/Area2D" to="Sprite2D2" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D2/Area2D" to="Sprite2D2" method="_on_area_2d_mouse_exited"]

@@ -3,7 +3,7 @@ extends TileMapLayer
 
 @export var data: LevelData
 
-# Get the last part of the file name to determine the next level
+# Get the file name to determine the level
 @onready var level_num = int(get_scene_file_path().split(".")[0])
 
 func _on_valid_solution():
