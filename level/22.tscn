@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_luc2o"]
 script = ExtResource("9_yogfm")
 board_size = Vector2i(6, 6)
-pieces = Array[ExtResource("3_1hiuk")]([ExtResource("4_luc2o"), ExtResource("5_560ra"), ExtResource("5_bviqm"), ExtResource("6_r0yo7"), ExtResource("8_1hiuk")])
+pieces = Array[ExtResource("3_1hiuk")]([ExtResource("5_bviqm"), ExtResource("8_1hiuk"), ExtResource("4_luc2o"), ExtResource("6_r0yo7"), ExtResource("5_560ra")])
 line_thickness = 2
 cell_size_px = 60
 piece_spacing_multiplier = 0.75
@@ -30,6 +30,8 @@ data = SubResource("Resource_luc2o")
 texture_filter = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="ui"]
-position = Vector2(693, 79)
+position = Vector2(425, 79)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_bviqm")
+region_enabled = true
+region_rect = Rect2(0, 0, 1461.63, 129.106)

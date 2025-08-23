@@ -2,7 +2,7 @@ extends Element
 
 @export_range(1, 6) var number: int
 
-var type = TYPE.SPACE_AMOUNT
+const type = TYPE.SPACE_AMOUNT
 
 func check(data) -> bool:
 	checked_cells = []
@@ -31,7 +31,7 @@ func check_recursive(data, cell_grid: Vector2i) -> int:
 
 	return count
 
-const unit_hexagon_points = [
+const base_hexagon_points = [
 	Vector2(1, 0),
 	Vector2(0.5, sqrt(3) / 2),
 	Vector2(-0.5, sqrt(3) / 2),
@@ -40,7 +40,7 @@ const unit_hexagon_points = [
 	Vector2(0.5, -sqrt(3) / 2)
 ]
 var hexagon_points = []
-const unit_triangle_points = [
+const base_triangle_points = [
 	Vector2(0, -1),
 	Vector2(-sqrt(3) / 2, 0.5),
 	Vector2(sqrt(3) / 2, 0.5)
@@ -51,9 +51,9 @@ func initialise(board_ref: Board) -> void:
 	board = board_ref
 	hexagon_points.clear()
 	triangle_points.clear()
-	for point in unit_hexagon_points:
+	for point in base_hexagon_points:
 		hexagon_points.append(point * (board_ref.cell_size_px * 0.2) + Vector2(board_ref.cell_size_px, board_ref.cell_size_px) / 2)
-	for point in unit_triangle_points:
+	for point in base_triangle_points:
 		# scale the triangle to have radius cell_size_px * 0.1 and position it above the hexagon with a gap
 		triangle_points.append(point * (board_ref.cell_size_px * 0.1) + Vector2(0, -(0.5 + sqrt(3) / 2) * board_ref.cell_size_px * 0.2))
 const angle_step = PI / 3

@@ -31,6 +31,8 @@ data = SubResource("Resource_farmd")
 texture_filter = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="ui"]
-position = Vector2(700, 79)
+position = Vector2(420, 79)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_oywkh")
+region_enabled = true
+region_rect = Rect2(0, 0, 1461.2, 124)

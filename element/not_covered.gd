@@ -4,7 +4,7 @@ var line_thickness: float
 var radius: float
 var centre: Vector2
 
-var type = TYPE.NOT_COVERED
+const type = TYPE.NOT_COVERED
 
 func initialise(board: Board) -> void:
 	colour = Colours.ORANGE

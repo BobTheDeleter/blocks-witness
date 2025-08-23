@@ -2,7 +2,7 @@ extends Element
 
 var rect: Rect2
 
-var type = TYPE.PARTITION_DOT
+const type = TYPE.PARTITION_DOT
 
 var original_colour: Color
 

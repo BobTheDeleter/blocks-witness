@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyg61u48cud5e"]
+
+[ext_resource type="Script" uid="uid://byswqi8k0vbk4" path="res://element/piece_count.gd" id="1_yc5jm"]
+
+[node name="piece_count" type="Node2D" groups=["element"]]
+z_index = 3
+script = ExtResource("1_yc5jm")

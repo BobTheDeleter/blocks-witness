@@ -45,6 +45,7 @@ const covered_packed_scene = preload("res://element/covered.tscn")
 const not_covered_packed_scene = preload("res://element/not_covered.tscn")
 const partition_dot_packed_scene = preload("res://element/partition_dot.tscn")
 const space_amount_packed_scene = preload("res://element/cell_count.tscn")
+const piece_count_packed_scene = preload("res://element/piece_count.tscn")
 func generate_elements() -> void:
 	for x in data.board_size.x:
 		for y in data.board_size.y:
@@ -61,6 +62,9 @@ func generate_elements() -> void:
 						element.original_colour = cell.get_custom_data("colour")
 					3:
 						element = space_amount_packed_scene.instantiate()
+						element.number = cell.get_custom_data("number")
+					4:
+						element = piece_count_packed_scene.instantiate()
 						element.number = cell.get_custom_data("number")
 
 				element.position_grid = Vector2i(x, y)
