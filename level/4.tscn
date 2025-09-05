@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dol6p6cdbovip"]
+[gd_scene load_steps=7 format=3 uid="uid://3sc3l7wwk6ml"]
 
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_pufsq"]
 [ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_awhqq"]
@@ -20,6 +20,3 @@ tile_map_data = PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0)
 tile_set = ExtResource("1_pufsq")
 script = ExtResource("2_awhqq")
 data = SubResource("Resource_farmd")
-
-[node name="ui" type="Node2D" parent="." groups=["ui"]]
-texture_filter = 1

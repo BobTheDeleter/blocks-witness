@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_kx1vk"]
 [ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="4_8qchx"]
 [ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/base/level_data.gd" id="5_8j2kt"]
-[ext_resource type="Texture2D" uid="uid://5vuyf64x150p" path="res://ui/mouse_right_outline.svg" id="7_8qchx"]
 [ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="8_8j2kt"]
 [ext_resource type="Texture2D" uid="uid://did64eyl61y4g" path="res://ui/rotate_arrow.png" id="9_8j2kt"]
+[ext_resource type="Texture2D" uid="uid://cxkstissdjq73" path="res://ui/mouse_left_outline.svg" id="11_nl5de"]
 
 [sub_resource type="Resource" id="Resource_farmd"]
 script = ExtResource("5_8j2kt")
@@ -24,19 +24,40 @@ tile_set = ExtResource("1_r4nvj")
 script = ExtResource("2_f7uwc")
 data = SubResource("Resource_farmd")
 
-[node name="ui" type="Node2D" parent="." groups=["ui"]]
+[node name="ui_custom" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui_custom"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 130.0
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("11_nl5de")
+
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/HBoxContainer"]
 texture_filter = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="ui"]
-position = Vector2(50, 50)
-texture = ExtResource("7_8qchx")
-
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D"]
-position = Vector2(60, 0)
-scale = Vector2(2, 2)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
 texture = ExtResource("8_8j2kt")
+expand_mode = 4
+stretch_mode = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D/Sprite2D"]
-position = Vector2(15, 15)
-scale = Vector2(0.02, 0.02)
+[node name="TextureRect" type="TextureRect" parent="ui_custom/HBoxContainer/TextureRect2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -24.0
+offset_right = 637.0
+offset_bottom = 616.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("9_8j2kt")

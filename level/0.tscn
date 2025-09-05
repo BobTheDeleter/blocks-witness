@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2bkrbn7f0vvq"]
+[gd_scene load_steps=13 format=3 uid="uid://2bkrbn7f0vvq"]
 
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/base/editor_tileset.tres" id="1_8i3ps"]
 [ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/base/level.gd" id="2_30ajw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cprn0mr75fe5u" path="res://ui/arrow-up-solid-full.svg" id="8_farmd"]
 [ext_resource type="Texture2D" uid="uid://bkwon5ak7p6ug" path="res://ui/keyboard_r_outline.svg" id="9_mgcjh"]
 [ext_resource type="Texture2D" uid="uid://did64eyl61y4g" path="res://ui/rotate_arrow.png" id="10_0jo0j"]
+[ext_resource type="Texture2D" uid="uid://bwep0uhx8lrrd" path="res://ui/arrow-down-solid-full.svg" id="14_6enf2"]
 
 [sub_resource type="Resource" id="Resource_farmd"]
 script = ExtResource("5_gn3tg")
@@ -26,43 +27,93 @@ tile_set = ExtResource("1_8i3ps")
 script = ExtResource("2_30ajw")
 data = SubResource("Resource_farmd")
 
-[node name="ui" type="Node2D" parent="." groups=["ui"]]
+[node name="ui_custom" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui_custom"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 298.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui_custom/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("6_gn3tg")
+
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer"]
 texture_filter = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="ui"]
-position = Vector2(50, 50)
-texture = ExtResource("6_gn3tg")
-
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D"]
-position = Vector2(60, 0)
-scale = Vector2(2, 2)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
 texture = ExtResource("7_farmd")
+expand_mode = 4
+stretch_mode = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D/Sprite2D"]
-position = Vector2(15, 15)
-scale = Vector2(0.02, 0.02)
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer/TextureRect2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -24.0
+offset_right = 637.0
+offset_bottom = 616.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_farmd")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ui"]
-position = Vector2(50, 120)
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui_custom/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 texture = ExtResource("6_gn3tg")
 
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D2"]
-position = Vector2(60, 0)
-scale = Vector2(2, 2)
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
 texture = ExtResource("7_farmd")
+expand_mode = 4
+stretch_mode = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D2/Sprite2D"]
-position = Vector2(15, 15)
-rotation = 3.14159
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("8_farmd")
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer2/TextureRect2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -24.0
+offset_right = 637.0
+offset_bottom = 616.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_6enf2")
 
-[node name="Sprite2D3" type="Sprite2D" parent="ui"]
-position = Vector2(50, 190)
+[node name="HBoxContainer3" type="HBoxContainer" parent="ui_custom/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 texture = ExtResource("9_mgcjh")
+stretch_mode = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="ui/Sprite2D3"]
-position = Vector2(60, 0)
-scale = Vector2(0.08, 0.08)
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer3"]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
 texture = ExtResource("10_0jo0j")
+expand_mode = 4
+stretch_mode = 5

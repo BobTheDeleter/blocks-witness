@@ -4,26 +4,28 @@ extends TileMapLayer
 @export var data: LevelData
 
 # Get the file name to determine the level
-@onready var level_num = int(get_scene_file_path().split(".")[0])
+var level_num:int
 
 func _on_valid_solution():
 	Progression.highest_completed_level = max(level_num, Progression.highest_completed_level)
 	if Progression.does_level_exist(level_num + 1):
-		$solution_text.win()
+		$ui/popup.win()
 		create_next_level_button()
 	else:
-		$solution_text.finish()
+		$ui/popup.finish()
 func _on_invalid_solution():
-	$solution_text.lose()
+	$ui/popup.lose()
 
 func _ready() -> void:
+	level_num = int(get_scene_file_path().split(".")[0])
 	Progression.current_level = level_num
 	initialise_camera()
 	generate_pieces()
 	generate_elements()
 	initialise_board()
-	create_level_select_arrows()
-	position_ui()
+	create_ui()
+	setup_level_buttons()
+	create_level_number()
 
 	clear()
 
@@ -77,16 +79,6 @@ func initialise_camera() -> void:
 	add_child(camera)
 	camera.global_position = data.board_size * data.cell_size_px / 2
 
-const solution_text_packed_scene = preload("res://level/base/solution_text.tscn")
-var solution_text
-func position_ui() -> void:
-	solution_text = solution_text_packed_scene.instantiate()
-	solution_text.global_position = Vector2(data.board_size.x * data.cell_size_px / 2.0, -100)
-	add_child(solution_text)
-
-	if get_tree().get_nodes_in_group("ui").size() > 0:
-		get_tree().get_nodes_in_group("ui")[0].global_position = camera.screen_to_world_px(Vector2.ZERO)
-
 const piece_packed_scene = preload("res://piece/piece.tscn")
 func generate_pieces() -> void:
 	for piece_data in data.pieces:
@@ -97,23 +89,29 @@ func generate_pieces() -> void:
 		add_child(piece)
 		piece.queue_redraw()
 
-const level_select_arrow_packed_scene = preload("res://level/base/level_select_arrow.tscn")
-func create_level_select_arrows() -> void:
-	if level_num > 0:
-		var left_arrow = level_select_arrow_packed_scene.instantiate()
-		$ui.add_child(left_arrow)
-		left_arrow.rotation = PI
-		left_arrow.pressed.connect(Progression._on_change_level.bind(level_num - 1))
-		left_arrow.position = Vector2(50, DisplayServer.window_get_size().y / 2.0)
-	
-	if Progression.highest_completed_level >= level_num:
-		var right_arrow = level_select_arrow_packed_scene.instantiate()
-		$ui.add_child(right_arrow)
-		right_arrow.pressed.connect(Progression._on_change_level.bind(level_num + 1))
-		right_arrow.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)
+const ui_packed_scene = preload("res://ui/ui.tscn")
+const popup_packed_scene = preload("res://level/base/popup.tscn")
+func create_ui() -> void:
+	var ui = ui_packed_scene.instantiate()
+	add_child(ui)
+	var popup = popup_packed_scene.instantiate()
+	ui.add_child(popup)
+
+func setup_level_buttons() -> void:
+	$ui/next.connect("pressed", Progression._on_change_level.bind(level_num + 1))
+	$ui/prev.connect("pressed", Progression._on_change_level.bind(level_num - 1))
+
+	if Progression.highest_completed_level < level_num:
+		$ui/next.disabled = true
+		$ui/next.visible = false
+
+	if level_num == 0:
+		$ui/prev.disabled = true
+		$ui/prev.visible = false
 
 func create_next_level_button() -> void:
-	var next_level_button = level_select_arrow_packed_scene.instantiate()
-	$ui.add_child(next_level_button)
-	next_level_button.pressed.connect(Progression._on_change_level.bind(level_num + 1))
-	next_level_button.position = Vector2(DisplayServer.window_get_size().x - 50, DisplayServer.window_get_size().y / 2.0)
+	$ui/next.disabled = false
+	$ui/next.visible = true
+
+func create_level_number() -> void:
+	$ui/level_number.text = "Level " + str(level_num)

@@ -21,6 +21,3 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAGAAAAAAAAAAEAAAADAAAAAAABAAAAAAACAAA
 tile_set = ExtResource("1_jehko")
 script = ExtResource("2_gf0f5")
 data = SubResource("Resource_farmd")
-
-[node name="ui" type="Node2D" parent="." groups=["ui"]]
-texture_filter = 1
