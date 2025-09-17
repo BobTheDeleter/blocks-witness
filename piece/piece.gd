@@ -31,6 +31,13 @@ func _ready() -> void:
 	# var colour_offset = Color(randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range))
 	colour = Colours.YELLOW # + colour_offset
 
+	connect("piece_picked_up", play_pick_up)
+	connect("piece_placed", play_place)
+func play_pick_up(_self) -> void:
+	Audio.play_sfx(Audio.SFX.PICK_UP)
+func play_place(_self) -> void:
+	Audio.play_sfx(Audio.SFX.PLACE)
+
 var bounding_rect_px: Rect2
 func calculate_bounding_rect() -> void:
 	var top_left = Vector2(INF, INF)

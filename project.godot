@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Colours="*res://autoloads/colours.gd"
 Progression="*res://autoloads/progression.gd"
+Audio="*res://autoloads/audio.gd"
 
 [display]
 

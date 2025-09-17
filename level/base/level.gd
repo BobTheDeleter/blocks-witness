@@ -13,8 +13,10 @@ func _on_valid_solution():
 		create_next_level_button()
 	else:
 		$ui/popup.finish()
+	Audio.play_sfx(Audio.SFX.WIN)
 func _on_invalid_solution():
 	$ui/popup.lose()
+	Audio.play_sfx(Audio.SFX.LOSE)
 
 func _ready() -> void:
 	level_num = int(get_scene_file_path().split(".")[0])
@@ -100,6 +102,9 @@ func create_ui() -> void:
 func setup_level_buttons() -> void:
 	$ui/next.connect("pressed", Progression._on_change_level.bind(level_num + 1))
 	$ui/prev.connect("pressed", Progression._on_change_level.bind(level_num - 1))
+
+	$ui/next.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
+	$ui/prev.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
 
 	if Progression.highest_completed_level < level_num:
 		$ui/next.disabled = true

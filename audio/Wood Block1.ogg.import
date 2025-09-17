@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8yvvppibmm82"
+path="res://.godot/imported/Wood Block1.ogg-e51a438f6a0f910d157528c17167abb3.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/Wood Block1.ogg"
+dest_files=["res://.godot/imported/Wood Block1.ogg-e51a438f6a0f910d157528c17167abb3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
