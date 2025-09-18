@@ -39,14 +39,14 @@ func play_sfx(sfx: SFX) -> void:
             sfx_player.volume_db = 10
         SFX.PLACE:
             sfx_player.stream = place
-            sfx_player.volume_db = 20
+            sfx_player.volume_db = 10
         SFX.CLICK:
             sfx_player.stream = click
-            sfx_player.volume_db = 25
+            sfx_player.volume_db = 20
         SFX.WIN:
             sfx_player.stream = win
-            sfx_player.volume_db = 25
+            sfx_player.volume_db = 15
         SFX.LOSE:
             sfx_player.stream = lose
-            sfx_player.volume_db = 30
+            sfx_player.volume_db = 20
     sfx_player.play()

@@ -101,6 +101,8 @@ func rotate_piece() -> void:
 
 	queue_redraw()
 
+	Audio.play_sfx(Audio.SFX.PICK_UP)
+
 func _process(_delta):
 	match state:
 		State.PICKED_UP:

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Blocks witness"
+config/name="Puzzle-Ominos"
 run/main_scene="uid://wjfu375bgaod"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

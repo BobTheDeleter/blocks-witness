@@ -3,7 +3,6 @@ extends TileMapLayer
 
 @export var data: LevelData
 
-# Get the file name to determine the level
 var level_num:int
 
 func _on_valid_solution():
@@ -17,8 +16,7 @@ func _on_invalid_solution():
 	Audio.play_sfx(Audio.SFX.LOSE)
 
 func _ready() -> void:
-	level_num = int(get_scene_file_path().split(".")[0])
-	Progression.current_level = level_num
+	level_num = Progression.current_level
 	initialise_camera()
 	generate_pieces()
 	generate_elements()
@@ -31,7 +29,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_level"):
-		Progression._on_change_level(level_num)
+		Progression.change_level(level_num)
 
 const board_packed_scene = preload("res://level/board.tscn")
 var board: Board
@@ -98,8 +96,8 @@ func create_ui() -> void:
 	ui.add_child(popup)
 
 func setup_level_buttons() -> void:
-	$ui/next.connect("pressed", Progression._on_change_level.bind(level_num + 1))
-	$ui/prev.connect("pressed", Progression._on_change_level.bind(level_num - 1))
+	$ui/next.connect("pressed", Progression.change_level.bind(level_num + 1))
+	$ui/prev.connect("pressed", Progression.change_level.bind(level_num - 1))
 
 	$ui/next.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
 	$ui/prev.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
