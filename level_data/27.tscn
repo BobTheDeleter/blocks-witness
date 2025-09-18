@@ -1,0 +1,44 @@
+[gd_scene load_steps=13 format=4 uid="uid://i24qfwtf5u1k"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/editor_tileset.tres" id="1_6ura2"]
+[ext_resource type="Script" uid="uid://6pxhjg0i6mlj" path="res://level/level_bonus.gd" id="2_vtp0y"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_q1gsx"]
+[ext_resource type="Resource" uid="uid://bb8bdpnygl0t0" path="res://piece/hero.tres" id="4_24cs1"]
+[ext_resource type="Resource" uid="uid://dasg14fpaujmg" path="res://piece/smashboy.tres" id="5_eyxjy"]
+[ext_resource type="Resource" uid="uid://fvq3b6xtnafs" path="res://piece/cleveland_z.tres" id="6_lfs3k"]
+[ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="7_7eii4"]
+[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="8_lv20l"]
+[ext_resource type="Resource" uid="uid://d3vi7vy3i7sql" path="res://piece/short_king.tres" id="9_6hhmd"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/level_data.gd" id="10_x6r5f"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("10_x6r5f")
+board_size = Vector2i(7, 7)
+pieces = Array[ExtResource("3_q1gsx")]([ExtResource("4_24cs1"), ExtResource("5_eyxjy"), ExtResource("6_lfs3k"), ExtResource("7_7eii4"), ExtResource("6_lfs3k"), ExtResource("8_lv20l"), ExtResource("9_6hhmd")])
+line_thickness = 2
+cell_size_px = 55
+piece_spacing_multiplier = 0.6
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ll14o"]
+font_size = 120
+font_color = Color(0.912289, 0.912289, 0.912289, 1)
+outline_size = 20
+outline_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAAAAEAAAADAAAAAAACAAAAAAADAAAAAAABAAEAAAACAAAAAAAEAAAAAAAAAAAAAAAGAAEAAAACAAAAAAADAAIAAAABAAEAAAAEAAMAAAABAAEAAAAAAAMAAAAHAAAAAAABAAQAAAAAAAAAAAAAAAUAAAAHAAAAAAAEAAUAAAADAAAAAAADAAUAAAACAAAAAAAAAAYAAAADAAAAAAA=")
+tile_set = ExtResource("1_6ura2")
+script = ExtResource("2_vtp0y")
+data = SubResource("Resource_farmd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="Label" parent="CanvasLayer"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 2614.0
+offset_bottom = 174.0
+scale = Vector2(0.5, 0.5)
+text = "Bonus level"
+label_settings = SubResource("LabelSettings_ll14o")

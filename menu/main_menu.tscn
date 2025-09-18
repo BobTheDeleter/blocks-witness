@@ -1,19 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://wjfu375bgaod"]
+[gd_scene load_steps=5 format=3 uid="uid://wjfu375bgaod"]
 
-[ext_resource type="Script" uid="uid://crw0xudrihk47" path="res://menu/main_menu.gd" id="1_f5okj"]
-[ext_resource type="Texture2D" uid="uid://d1s0vbvtia8ci" path="res://level/base/title.png" id="2_o5w3e"]
 [ext_resource type="Texture2D" uid="uid://bxf833nbxd1ub" path="res://addons/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Square-Medium/Play/Default.svg" id="3_1x3cv"]
 [ext_resource type="Script" uid="uid://blo0suh0b2sv7" path="res://menu/play.gd" id="4_jc45y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5okj"]
+font_size = 120
+font_color = Color(0.912289, 0.912289, 0.912289, 1)
+outline_size = 20
+outline_color = Color(0.151276, 0.151276, 0.151276, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8mfa"]
 size = Vector2(92, 88)
 
-[node name="MainMenu" type="Node2D"]
-script = ExtResource("1_f5okj")
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -198)
-texture = ExtResource("2_o5w3e")
+[node name="Sprite2D" type="Label" parent="."]
+layout_mode = 0
+offset_left = -450.0
+offset_top = -300.0
+offset_right = 450.0
+offset_bottom = -100.0
+text = "Puzzle-ominos"
+label_settings = SubResource("LabelSettings_f5okj")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

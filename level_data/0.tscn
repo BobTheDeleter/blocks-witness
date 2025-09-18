@@ -1,0 +1,131 @@
+[gd_scene load_steps=13 format=3 uid="uid://2bkrbn7f0vvq"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/editor_tileset.tres" id="1_fkau7"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/level.gd" id="2_85kf2"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_114qo"]
+[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="4_poi3q"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/level_data.gd" id="5_i852e"]
+[ext_resource type="Texture2D" uid="uid://cxkstissdjq73" path="res://ui/mouse_left_outline.svg" id="6_bjc8x"]
+[ext_resource type="Texture2D" uid="uid://cqadrmnq3i5i3" path="res://ui/example_piece.png" id="7_nicmp"]
+[ext_resource type="Texture2D" uid="uid://cprn0mr75fe5u" path="res://ui/arrow-up-solid-full.svg" id="8_5ne2g"]
+[ext_resource type="Texture2D" uid="uid://bwep0uhx8lrrd" path="res://ui/arrow-down-solid-full.svg" id="9_xst3w"]
+[ext_resource type="Texture2D" uid="uid://bkwon5ak7p6ug" path="res://ui/keyboard_r_outline.svg" id="10_1ad2p"]
+[ext_resource type="Texture2D" uid="uid://did64eyl61y4g" path="res://ui/rotate_arrow.png" id="11_fra7p"]
+
+[sub_resource type="Resource" id="Resource_farmd"]
+script = ExtResource("5_i852e")
+board_size = Vector2i(3, 2)
+pieces = Array[ExtResource("3_114qo")]([ExtResource("4_poi3q")])
+line_thickness = 2
+cell_size_px = 80
+piece_spacing_multiplier = 1.0
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_fkau7")
+script = ExtResource("2_85kf2")
+data = SubResource("Resource_farmd")
+
+[node name="ui_custom" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui_custom"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 298.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui_custom/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("6_bjc8x")
+
+[node name="Padding" type="Control" parent="ui_custom/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("7_nicmp")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer/TextureRect2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -24.0
+offset_right = 637.0
+offset_bottom = 616.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_5ne2g")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui_custom/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("6_bjc8x")
+
+[node name="Padding" type="Control" parent="ui_custom/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("7_nicmp")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer2/TextureRect2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -24.0
+offset_right = 637.0
+offset_bottom = 616.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("9_xst3w")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ui_custom/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("10_1ad2p")
+stretch_mode = 5
+
+[node name="Padding" type="Control" parent="ui_custom/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui_custom/VBoxContainer/HBoxContainer3"]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+texture = ExtResource("11_fra7p")
+expand_mode = 4
+stretch_mode = 5

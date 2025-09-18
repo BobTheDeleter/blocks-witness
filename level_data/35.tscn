@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=4 uid="uid://bewqnya6e3tj"]
+
+[ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/editor_tileset.tres" id="1_auhos"]
+[ext_resource type="Script" uid="uid://6pxhjg0i6mlj" path="res://level/level_bonus.gd" id="2_g27eg"]
+[ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_upo3u"]
+[ext_resource type="Resource" uid="uid://fvq3b6xtnafs" path="res://piece/cleveland_z.tres" id="4_u57fu"]
+[ext_resource type="Resource" uid="uid://dx5ey7j8ujybd" path="res://piece/orange_ricky.tres" id="5_qe5g2"]
+[ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="6_q5kqg"]
+[ext_resource type="Script" uid="uid://dkogue6fhshum" path="res://level/level_data.gd" id="7_lqixa"]
+
+[sub_resource type="Resource" id="Resource_x4pnh"]
+script = ExtResource("7_lqixa")
+board_size = Vector2i(4, 4)
+pieces = Array[ExtResource("3_upo3u")]([ExtResource("4_u57fu"), ExtResource("5_qe5g2"), ExtResource("6_q5kqg")])
+line_thickness = 2
+cell_size_px = 90
+piece_spacing_multiplier = 0.7
+metadata/_custom_type_script = "uid://dkogue6fhshum"
+
+[sub_resource type="LabelSettings" id="LabelSettings_fb0do"]
+font_size = 120
+font_color = Color(0.912289, 0.912289, 0.912289, 1)
+outline_size = 20
+outline_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="level" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAACAAAAAAACAAAAAAABAAAAAAACAAAAAAADAAAAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAAAAAAAAAAEAAEAAAAAAAEAAAADAAAAAAAAAAMAAAADAAAAAAA=")
+tile_set = ExtResource("1_auhos")
+script = ExtResource("2_g27eg")
+data = SubResource("Resource_x4pnh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="Label" parent="CanvasLayer"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 2614.0
+offset_bottom = 174.0
+scale = Vector2(0.5, 0.5)
+text = "Throwback Thursday"
+label_settings = SubResource("LabelSettings_fb0do")

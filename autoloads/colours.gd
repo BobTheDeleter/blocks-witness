@@ -1,6 +1,6 @@
 extends Node
 
-const BLUE = Color("#91b0ffff")
+const BLUE = Color("#91b0ff")
 const BACKGROUND_BLUE = Color("#2c3752")
 const PURPLE = Color("#785ef0")
 const PINK = Color("#dc267f")
