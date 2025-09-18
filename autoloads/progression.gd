@@ -13,6 +13,6 @@ func change_level(level_num: int) -> void:
 	get_tree().change_scene_to_packed(levels[level_num])
 
 func does_level_exist(level_num: int) -> bool:
-	return ResourceLoader.exists("res://level_data/" + str(level_num) + ".tscn")
+	return level_num >= 0 and level_num < levels.size()
 
 @onready var levels: Array[PackedScene] = preload("res://level_data/levels.tres").levels
