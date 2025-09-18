@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjv2rafu67hpt"]
 
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/editor_tileset.tres" id="1_v4egv"]
-[ext_resource type="Script" uid="uid://6pxhjg0i6mlj" path="res://level/level_bonus.gd" id="2_2tudj"]
+[ext_resource type="Script" uid="uid://bi5d3b80dvl2e" path="res://level/level.gd" id="2_iwo5w"]
 [ext_resource type="Script" uid="uid://cmp6whuwah5wl" path="res://piece/piece_data.gd" id="3_yn3o8"]
 [ext_resource type="Resource" uid="uid://tnv88pxer5pe" path="res://piece/teewee.tres" id="4_ijxu6"]
 [ext_resource type="Resource" uid="uid://cpkctqmw7gjqk" path="res://piece/blue_ricky.tres" id="5_wrwr1"]
@@ -19,5 +19,5 @@ metadata/_custom_type_script = "uid://dkogue6fhshum"
 [node name="level" type="TileMapLayer"]
 tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0)
 tile_set = ExtResource("1_v4egv")
-script = ExtResource("2_2tudj")
+script = ExtResource("2_iwo5w")
 data = SubResource("Resource_x4pnh")
