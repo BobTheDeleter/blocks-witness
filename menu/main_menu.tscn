@@ -1,44 +1,68 @@
 [gd_scene load_steps=5 format=3 uid="uid://wjfu375bgaod"]
 
-[ext_resource type="Texture2D" uid="uid://bxf833nbxd1ub" path="res://addons/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Square-Medium/Play/Default.svg" id="3_1x3cv"]
+[ext_resource type="Texture2D" uid="uid://brouj5sy5sobd" path="res://menu/Default.svg" id="3_jc45y"]
 [ext_resource type="Script" uid="uid://blo0suh0b2sv7" path="res://menu/play.gd" id="4_jc45y"]
+[ext_resource type="Texture2D" uid="uid://geao4vibaa7f" path="res://menu/Hover.svg" id="4_s8mfa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5okj"]
-font_size = 120
+font_size = 60
 font_color = Color(0.912289, 0.912289, 0.912289, 1)
-outline_size = 20
+outline_size = 10
 outline_color = Color(0.151276, 0.151276, 0.151276, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8mfa"]
-size = Vector2(92, 88)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite2D" type="Label" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -450.0
-offset_top = -300.0
+offset_top = -277.0
 offset_right = 450.0
-offset_bottom = -100.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Puzzle-ominos"
 label_settings = SubResource("LabelSettings_f5okj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CheckBox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -63.0
+offset_right = 355.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Unlock all levels?"
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture = ExtResource("3_1x3cv")
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -44.0
+offset_right = 44.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_jc45y")
+texture_hover = ExtResource("4_s8mfa")
 script = ExtResource("4_jc45y")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D"]
-position = Vector2(1, -4)
-shape = SubResource("RectangleShape2D_s8mfa")
-
-[connection signal="input_event" from="Sprite2D2/Area2D" to="Sprite2D2" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Sprite2D2/Area2D" to="Sprite2D2" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Sprite2D2/Area2D" to="Sprite2D2" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
