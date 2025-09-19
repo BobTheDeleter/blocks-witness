@@ -85,7 +85,7 @@ func _on_mouse_exited() -> void:
 	mouse_over = false
 
 func rotate_piece() -> void:
-	# Rotate the piece initial_data blocks by 90 degrees clockwise
+	# Rotate the piece data by 90 degrees clockwise
 	var new_blocks: Array[Vector2i] = []
 	for block in blocks:
 		# Godot's y-axis is flipped
@@ -101,31 +101,48 @@ func rotate_piece() -> void:
 
 	queue_redraw()
 
+	global_position = get_parent().camera.get_mouse_position_world_px() - Vector2(blocks[picked_block] * cell_size_px) - picked_offset
+
 	Audio.play_sfx(Audio.SFX.PICK_UP)
+
+var picked_block: int
+var picked_offset: Vector2
+func pick_up_place() -> void:
+	if state != State.PICKED_UP:
+		# Emit signal to notify that the piece is picked up
+		emit_signal("piece_picked_up", self)
+		state = State.PICKED_UP
+		modulate = Color(1, 1, 0.5) # Change appearance when picked up
+		#only pick up 1 at a time
+		for piece in get_parent().board.pieces:
+			if piece.state == Piece.State.PICKED_UP and piece != self:
+				piece.state = Piece.State.IN_PALETTE
+
+		# loop through each block of the piece and find the one containing the mouse position
+		var mouse_pos_piece_space = get_parent().camera.get_mouse_position_world_px() - global_position
+		for i in range(blocks.size()):
+			var block_pos = Vector2(blocks[i] * cell_size_px)
+			var block_rect = Rect2(block_pos, Vector2(cell_size_px, cell_size_px))
+			if block_rect.has_point(mouse_pos_piece_space):
+				picked_block = i
+				picked_offset = mouse_pos_piece_space - block_pos
+				break		
+	else: 
+		# Emit the signal to notify that the piece is placed
+		# Let either the board or the palette detect where it is
+		emit_signal("piece_placed", self)
 
 func _process(_delta):
 	match state:
 		State.PICKED_UP:
-			global_position = get_parent().camera.get_mouse_position_world_px() + Vector2(blocks[0] * cell_size_px) - Vector2(cell_size_px, cell_size_px) / 2
+			global_position = get_parent().camera.get_mouse_position_world_px() - Vector2(blocks[picked_block] * cell_size_px) - picked_offset
 		State.IN_BOARD:
 			global_position = Vector2(origin_position_grid * cell_size_px)
 		_:
 			pass
 
 	if Input.is_action_just_pressed("pickup_place") and mouse_over:
-		if state != State.PICKED_UP:
-			# Emit signal to notify that the piece is picked up
-			for piece in get_parent().board.pieces:
-				if piece.state == Piece.State.PICKED_UP:
-					piece.state = Piece.State.IN_PALETTE
-			emit_signal("piece_picked_up", self)
-			state = State.PICKED_UP
-			modulate = Color(1, 1, 0.5) # Change appearance when picked up
-			
-		else: 
-			# Emit the signal to notify that the piece is placed
-			# Let either the board or the palette detect where it is
-			emit_signal("piece_placed", self)
+		pick_up_place()
 
 	if Input.is_action_just_pressed("rotate") and mouse_over:
 		if state != State.IN_BOARD:

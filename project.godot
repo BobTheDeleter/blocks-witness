@@ -13,7 +13,6 @@ config_version=5
 config/name="Puzzle-Ominos"
 run/main_scene="uid://wjfu375bgaod"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
