@@ -121,6 +121,7 @@ func _process(_delta):
 			emit_signal("piece_picked_up", self)
 			state = State.PICKED_UP
 			modulate = Color(1, 1, 0.5) # Change appearance when picked up
+			
 		else: 
 			# Emit the signal to notify that the piece is placed
 			# Let either the board or the palette detect where it is

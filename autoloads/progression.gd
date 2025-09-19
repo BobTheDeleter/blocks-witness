@@ -15,6 +15,9 @@ func change_level(level_num: int) -> void:
 func does_level_exist(level_num: int) -> bool:
 	return level_num >= 0 and level_num < levels.size()
 
+func is_level_unlocked(level_num: int) -> bool:
+	return does_level_exist(level_num) and level_num <= highest_completed_level + 1
+
 @onready var levels: Array[PackedScene] = preload("res://level_data/levels.tres").levels
 
 func next_level() -> void:

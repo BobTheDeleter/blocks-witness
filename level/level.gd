@@ -17,7 +17,6 @@ func _on_invalid_solution():
 
 func _ready() -> void:
 	level_num = Progression.current_level
-	print(level_num)
 	initialise_camera()
 	generate_pieces()
 	generate_elements()
@@ -103,13 +102,10 @@ func setup_level_buttons() -> void:
 	$ui/next.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
 	$ui/prev.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
 
-	if Progression.highest_completed_level < level_num:
-		$ui/next.disabled = true
-		$ui/next.visible = false
-
-	if level_num == 0:
-		$ui/prev.disabled = true
-		$ui/prev.visible = false
+	$ui/prev.disabled = Progression.is_level_unlocked(level_num - 1) == false
+	$ui/prev.visible = Progression.is_level_unlocked(level_num - 1)
+	$ui/next.disabled = Progression.is_level_unlocked(level_num + 1) == false
+	$ui/next.visible = Progression.is_level_unlocked(level_num + 1)
 
 func create_next_level_button() -> void:
 	$ui/next.disabled = false
