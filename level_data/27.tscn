@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://i24qfwtf5u1k"]
+[gd_scene load_steps=13 format=4 uid="uid://dmp8p2rqiso52"]
 
 [ext_resource type="TileSet" uid="uid://bmgrgrk1mlwsg" path="res://level/editor_tileset.tres" id="1_6ura2"]
 [ext_resource type="Script" uid="uid://6pxhjg0i6mlj" path="res://level/level_bonus.gd" id="2_vtp0y"]
@@ -26,7 +26,7 @@ font_color = Color(0.912289, 0.912289, 0.912289, 1)
 outline_size = 20
 outline_color = Color(0.151276, 0.151276, 0.151276, 1)
 
-[node name="level" type="TileMapLayer"]
+[node name="level2" type="TileMapLayer"]
 tile_map_data = PackedByteArray("AAAAAAEAAAADAAAAAAACAAAAAAADAAAAAAABAAEAAAACAAAAAAAEAAAAAAAAAAAAAAAGAAEAAAACAAAAAAADAAIAAAABAAEAAAAEAAMAAAABAAEAAAAAAAMAAAAHAAAAAAABAAQAAAAAAAAAAAAAAAUAAAAHAAAAAAAEAAUAAAADAAAAAAADAAUAAAACAAAAAAAAAAYAAAADAAAAAAA=")
 tile_set = ExtResource("1_6ura2")
 script = ExtResource("2_vtp0y")
