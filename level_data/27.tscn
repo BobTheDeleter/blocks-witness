@@ -17,7 +17,7 @@ board_size = Vector2i(7, 7)
 pieces = Array[ExtResource("3_q1gsx")]([ExtResource("4_24cs1"), ExtResource("5_eyxjy"), ExtResource("6_lfs3k"), ExtResource("7_7eii4"), ExtResource("6_lfs3k"), ExtResource("8_lv20l"), ExtResource("9_6hhmd")])
 line_thickness = 2
 cell_size_px = 55
-piece_spacing_multiplier = 0.6
+piece_spacing_multiplier = 0.5
 metadata/_custom_type_script = "uid://dkogue6fhshum"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ll14o"]

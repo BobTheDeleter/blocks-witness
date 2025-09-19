@@ -16,3 +16,9 @@ func does_level_exist(level_num: int) -> bool:
 	return level_num >= 0 and level_num < levels.size()
 
 @onready var levels: Array[PackedScene] = preload("res://level_data/levels.tres").levels
+
+func next_level() -> void:
+	change_level(current_level + 1)
+
+func prev_level() -> void:
+	change_level(current_level - 1)

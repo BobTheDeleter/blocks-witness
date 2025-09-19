@@ -17,6 +17,7 @@ func _on_invalid_solution():
 
 func _ready() -> void:
 	level_num = Progression.current_level
+	print(level_num)
 	initialise_camera()
 	generate_pieces()
 	generate_elements()
@@ -96,8 +97,8 @@ func create_ui() -> void:
 	ui.add_child(popup)
 
 func setup_level_buttons() -> void:
-	$ui/next.connect("pressed", Progression.change_level.bind(level_num + 1))
-	$ui/prev.connect("pressed", Progression.change_level.bind(level_num - 1))
+	$ui/next.connect("pressed", Progression.next_level)
+	$ui/prev.connect("pressed", Progression.prev_level)
 
 	$ui/next.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))
 	$ui/prev.connect("pressed", Audio.play_sfx.bind(Audio.SFX.CLICK))

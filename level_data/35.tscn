@@ -13,7 +13,7 @@ script = ExtResource("7_lqixa")
 board_size = Vector2i(4, 4)
 pieces = Array[ExtResource("3_upo3u")]([ExtResource("4_u57fu"), ExtResource("5_qe5g2"), ExtResource("6_q5kqg")])
 line_thickness = 2
-cell_size_px = 90
+cell_size_px = 70
 piece_spacing_multiplier = 0.7
 metadata/_custom_type_script = "uid://dkogue6fhshum"
 

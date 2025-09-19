@@ -23,8 +23,8 @@ Audio="*res://autoloads/audio.gd"
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=900
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/resizable=false
 
 [editor]
