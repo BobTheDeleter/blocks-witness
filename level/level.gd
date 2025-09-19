@@ -9,11 +9,13 @@ func _on_valid_solution():
 	Progression.highest_completed_level = max(level_num, Progression.highest_completed_level)
 	if Progression.does_level_exist(level_num + 1):
 		create_next_level_button()
+		$ui/popup.win()
 	else:
 		$ui/popup.finish()
 	Audio.play_sfx(Audio.SFX.WIN)
 func _on_invalid_solution():
 	Audio.play_sfx(Audio.SFX.LOSE)
+	$ui/popup.lose()
 
 func _ready() -> void:
 	level_num = Progression.current_level

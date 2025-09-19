@@ -12,8 +12,8 @@ script = ExtResource("6_mfxxv")
 board_size = Vector2i(5, 5)
 pieces = Array[ExtResource("3_q7xjh")]([ExtResource("8_ehxmm"), ExtResource("8_ehxmm"), ExtResource("5_gf0xo"), ExtResource("5_gf0xo")])
 line_thickness = 2
-cell_size_px = 70
-piece_spacing_multiplier = 0.6
+cell_size_px = 65
+piece_spacing_multiplier = 0.55
 metadata/_custom_type_script = "uid://dkogue6fhshum"
 
 [node name="level" type="TileMapLayer"]
